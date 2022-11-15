@@ -1,0 +1,10 @@
+## Interface: 30400
+## Author: Neya
+## Version: 0.1
+## Title: |cff00c3ffRedux|r |cffd78219Textures|r
+## Notes: Redux Textures: Upscaled interface textures.
+## DefaultState: Enabled
+
+ReduxTextures.lua
+LeatrixMaps.lua
+LeatrixPlus.lua
