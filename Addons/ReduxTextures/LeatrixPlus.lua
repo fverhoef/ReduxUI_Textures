@@ -48,7 +48,7 @@ local function RestoreClassTrainerFrameTextures()
     end
 end
 
-local eventFrame = Frame("Frame", addonName .. "EventFrame_LeatrixPlus")
+local eventFrame = CreateFrame("Frame", addonName .. "EventFrame_LeatrixPlus")
 eventFrame:RegisterEvent("ADDON_LOADED")
 eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 eventFrame:SetScript("OnEvent", function(self, event, ...)
