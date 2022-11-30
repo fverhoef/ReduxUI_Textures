@@ -1,20 +1,13 @@
 local addonName, ns = ...
+local RT = _G.ReduxTextures
 
-local function FixAuctionatorFrameTextures()
-    AuctionFrameTopLeft:SetTexture("Interface\\AddOns\\ReduxTextures\\Textures\\Auctionator\\TopLeft")
-    AuctionFrameTop:SetTexture("Interface\\AddOns\\ReduxTextures\\Textures\\Auctionator\\Top")
-    AuctionFrameTopRight:SetTexture("Interface\\AddOns\\ReduxTextures\\Textures\\Auctionator\\TopRight")
-    AuctionFrameBotLeft:SetTexture("Interface\\AddOns\\ReduxTextures\\Textures\\Auctionator\\BottomLeft")
-    AuctionFrameBot:SetTexture("Interface\\AddOns\\ReduxTextures\\Textures\\Auctionator\\Bottom")
-    AuctionFrameBotRight:SetTexture("Interface\\AddOns\\ReduxTextures\\Textures\\Auctionator\\BottomRight")
-end
+local parts = { "TopLeft", "Top", "TopRight", "BotLeft", "Bot", "BotRight" }
 
-local eventFrame = CreateFrame("Frame", addonName .. "EventFrame_Auctionator")
-eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-eventFrame:SetScript("OnEvent", function(self, event, ...)
-    if event == "PLAYER_ENTERING_WORLD" then
-        if _G.AuctionatorTabMixin then
-            hooksecurefunc(_G.AuctionatorTabMixin, "Selected", FixAuctionatorFrameTextures)
+function RT:FixAuctionatorFrameTextures()
+    for _, part in ipairs(parts) do
+        local texture = _G["AuctionFrame" .. part]
+        if texture then
+            _G["AuctionFrame" .. part]:SetTexture("Interface\\AddOns\\ReduxTextures\\Textures\\Auctionator\\" .. RT.config.db.profile.style .. "\\" .. part)
         end
     end
-end)
+end

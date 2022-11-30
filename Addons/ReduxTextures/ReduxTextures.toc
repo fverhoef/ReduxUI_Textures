@@ -4,8 +4,11 @@
 ## Title: |cff00c3ffRedux|r |cffd78219Textures|r
 ## Notes: Redux Textures: Upscaled interface textures.
 ## DefaultState: Enabled
+## SavedVariables: ReduxTextures_DB
 
-ReduxTextures.lua
-
+Libs\Libs.xml
+Core.lua
+Localization\Localization.xml
+Config.lua
 Auctionator.lua
 LeatrixPlus.lua

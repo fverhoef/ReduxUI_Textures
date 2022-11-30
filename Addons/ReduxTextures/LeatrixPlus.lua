@@ -1,6 +1,7 @@
 local addonName, ns = ...
+local RT = _G.ReduxTextures
 
-local function RestoreQuestLogFrameTextures()
+function RT:RestoreQuestLogFrameTextures()
     if _G.LeaPlusDB and _G.LeaPlusDB["EnhanceQuestLog"] == "On" and _G.LeaPlusDB["EnhanceQuestTaller"] == "On" then
         local regions = { _G["QuestLogFrame"]:GetRegions() }
 
@@ -16,7 +17,7 @@ local function RestoreQuestLogFrameTextures()
     end
 end
 
-local function RestoreTradeSkillFrameTextures()
+function RT:RestoreTradeSkillFrameTextures()
     if _G.LeaPlusDB and _G.LeaPlusDB["EnhanceProfessions"] == "On" then
         local regions = { _G["TradeSkillFrame"]:GetRegions() }
 
@@ -32,7 +33,7 @@ local function RestoreTradeSkillFrameTextures()
     end
 end
 
-local function RestoreClassTrainerFrameTextures()
+function RT:RestoreClassTrainerFrameTextures()
     if _G.LeaPlusDB and _G.LeaPlusDB["EnhanceTrainers"] == "On" then
         local regions = { _G["ClassTrainerFrame"]:GetRegions() }
 
@@ -47,19 +48,3 @@ local function RestoreClassTrainerFrameTextures()
         regions[3].SetTexCoord = nil
     end
 end
-
-local eventFrame = CreateFrame("Frame", addonName .. "EventFrame_LeatrixPlus")
-eventFrame:RegisterEvent("ADDON_LOADED")
-eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-eventFrame:SetScript("OnEvent", function(self, event, ...)
-    if event == "PLAYER_ENTERING_WORLD" then
-        C_Timer.After(0.5, RestoreQuestLogFrameTextures)
-    elseif event == "ADDON_LOADED" then
-        local loadedAddonName = ...
-        if loadedAddonName == "Blizzard_TradeSkillUI" then
-            C_Timer.After(0.1, RestoreTradeSkillFrameTextures)
-        elseif loadedAddonName == "Blizzard_TrainerUI" then
-            C_Timer.After(0.1, RestoreClassTrainerFrameTextures)
-        end
-    end
-end)
