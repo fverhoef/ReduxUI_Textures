@@ -5,7 +5,7 @@ local L = RT.L
 RT.Styles = { Vanilla = "Vanilla", Modern = "Modern" }
 
 RT.config = {}
-RT.config.defaults = { profile = { style = RT.Styles.Modern } }
+RT.config.defaults = { profile = { style = RT.Styles.Vanilla } }
 
 RT.config.options = {
     type = "group",
